@@ -7,7 +7,7 @@
 }:
 
 let
-  user = "%USER%";
+  user = "jarne";
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in

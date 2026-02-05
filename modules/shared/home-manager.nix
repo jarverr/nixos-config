@@ -6,9 +6,9 @@
 }:
 
 let
-  name = "%NAME%";
-  user = "%USER%";
-  email = "%EMAIL%";
+  name = "jarverr";
+  user = "jarne";
+  email = "jarne@vercruysse.dev";
 in
 {
   # Shared shell configuration
@@ -50,12 +50,15 @@ in
   git = {
     enable = true;
     ignores = [ "*.swp" ];
-    userName = name;
-    userEmail = email;
+    user = {
+      name = name;
+      email = email;
+    };
+
     lfs = {
       enable = true;
     };
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
       core = {
         editor = "vim";
@@ -322,12 +325,7 @@ in
   obsidian = {
     enable = true;
     vaults.vault = {
-      path = "vault";
-      corePlugins.vim.enable = true;
-      appearance = {
-        theme = "obsidian";
-        cssTheme = "Gruvbox";
-      };
+      target = "vault";
     };
   };
 }
