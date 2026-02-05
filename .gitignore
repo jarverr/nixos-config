@@ -1,0 +1,21 @@
+# Nix build outputs
+result
+result-*
+
+# direnv
+.direnv/
+
+# macOS
+.DS_Store
+
+# Editor backups
+*~
+*.swp
+*.swo
+\#*\#
+.#*
+
+# Secrets (if any)
+secrets/
+*.age
+!*.age.pub
