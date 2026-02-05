@@ -50,15 +50,14 @@ in
   git = {
     enable = true;
     ignores = [ "*.swp" ];
-    user = {
-      name = name;
-      email = email;
-    };
-
     lfs = {
       enable = true;
     };
     settings = {
+      user = {
+        name = name;
+        email = email;
+      };
       init.defaultBranch = "main";
       core = {
         editor = "vim";
@@ -218,7 +217,7 @@ in
   };
 
   ghostty = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     enableZshIntegration = true;
     settings = {
       theme = "GruvboxDark";

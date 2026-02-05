@@ -80,7 +80,7 @@ in
       { path = "/Applications/Zen.app/"; }
       { path = "/System/Applications/Messages.app/"; }
       { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
-      { path = "${pkgs.ghostty}/Applications/Ghostty.app/"; }
+      { path = "/Applications/Ghostty.app/"; }
       { path = "/System/Applications/Music.app/"; }
       { path = "/System/Applications/Photos.app/"; }
       { path = "/System/Applications/Photo Booth.app/"; }

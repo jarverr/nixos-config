@@ -9,5 +9,6 @@ _:
 
   # Apps
   "discord"
+  "ghostty"
   "spotify"
 ]
