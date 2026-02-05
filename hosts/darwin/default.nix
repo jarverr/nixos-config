@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  user = "jarne";
+  user = "%USER%";
 in
 
 {
@@ -51,6 +51,7 @@ in
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
+        _HIHideMenuBar = true;
 
         KeyRepeat = 2; # Values: 120, 90, 60, 30, 12, 6, 2
         InitialKeyRepeat = 15; # Values: 120, 94, 68, 35, 25, 15
