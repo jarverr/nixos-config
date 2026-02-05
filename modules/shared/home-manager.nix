@@ -1,25 +1,20 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let name = "%NAME%";
-    user = "%USER%";
-    email = "%EMAIL%"; in
+let
+  name = "%NAME%";
+  user = "%USER%";
+  email = "%EMAIL%";
+in
 {
   # Shared shell configuration
   zsh = {
     enable = true;
     autocd = false;
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./config;
-        file = "p10k.zsh";
-      }
-    ];
 
     initContent = lib.mkBefore ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
@@ -35,14 +30,9 @@ let name = "%NAME%";
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"
 
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
-
-      e() {
-          emacsclient -t "$@"
-      }
+      # Set default editor
+      export EDITOR="vim"
+      export VISUAL="vim"
 
       # nix shortcuts
       shell() {
@@ -68,7 +58,7 @@ let name = "%NAME%";
     extraConfig = {
       init.defaultBranch = "main";
       core = {
-	    editor = "vim";
+        editor = "vim";
         autocrlf = "input";
       };
       pull.rebase = true;
@@ -78,8 +68,14 @@ let name = "%NAME%";
 
   vim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes vim-startify vim-tmux-navigator ];
-    settings = { ignorecase = true; };
+    plugins = with pkgs.vimPlugins; [
+      vim-airline
+      vim-airline-themes
+      vim-startify
+    ];
+    settings = {
+      ignorecase = true;
+    };
     extraConfig = ''
       "" General
       set number
@@ -184,88 +180,23 @@ let name = "%NAME%";
 
       let g:airline_theme='bubblegum'
       let g:airline_powerline_fonts = 1
-      '';
-     };
-
-  alacritty = {
-    enable = true;
-    settings = {
-      cursor = {
-        style = "Block";
-      };
-
-      window = {
-        opacity = 1.0;
-        padding = {
-          x = 24;
-          y = 24;
-        };
-      };
-
-      # Fix for shell path when launching from desktop
-      # When launching from desktop, $SHELL may point to /bin/zsh instead of
-      # the Nix-managed shell, causing environment issues
-      terminal.shell = {
-        program = "${pkgs.zsh}/bin/zsh";
-      };
-
-      font = {
-        normal = {
-          family = "MesloLGS NF";
-          style = "Regular";
-        };
-        size = lib.mkMerge [
-          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux 10)
-          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin 14)
-        ];
-      };
-
-      colors = {
-        primary = {
-          background = "0x1f2528";
-          foreground = "0xc0c5ce";
-        };
-
-        normal = {
-          black = "0x1f2528";
-          red = "0xec5f67";
-          green = "0x99c794";
-          yellow = "0xfac863";
-          blue = "0x6699cc";
-          magenta = "0xc594c5";
-          cyan = "0x5fb3b3";
-          white = "0xc0c5ce";
-        };
-
-        bright = {
-          black = "0x65737e";
-          red = "0xec5f67";
-          green = "0x99c794";
-          yellow = "0xfac863";
-          blue = "0x6699cc";
-          magenta = "0xc594c5";
-          cyan = "0x5fb3b3";
-          white = "0xd8dee9";
-        };
-      };
-    };
+    '';
   };
 
   ssh = {
     enable = true;
     enableDefaultConfig = false;
     includes = [
-      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-        "/home/${user}/.ssh/config_external"
-      )
-      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-        "/Users/${user}/.ssh/config_external"
-      )
+      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "/home/${user}/.ssh/config_external")
+      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Users/${user}/.ssh/config_external")
     ];
     matchBlocks = {
       "*" = {
         # Set the default values we want to keep
-        sendEnv = [ "LANG" "LC_*" ];
+        sendEnv = [
+          "LANG"
+          "LC_*"
+        ];
         hashKnownHosts = true;
       };
       # Example SSH configuration for GitHub
@@ -283,87 +214,120 @@ let name = "%NAME%";
     };
   };
 
-  tmux = {
+  ghostty = {
     enable = true;
-    plugins = with pkgs.tmuxPlugins; [
-      vim-tmux-navigator
-      sensible
-      yank
-      prefix-highlight
-      {
-        plugin = power-theme;
-        extraConfig = ''
-           set -g @tmux_power_theme 'gold'
-        '';
-      }
-      {
-        plugin = resurrect; # Used by tmux-continuum
-
-        # Use XDG data directory
-        # https://github.com/tmux-plugins/tmux-resurrect/issues/348
-        extraConfig = ''
-          set -g @resurrect-dir '$HOME/.cache/tmux/resurrect'
-          set -g @resurrect-capture-pane-contents 'on'
-          set -g @resurrect-pane-contents-area 'visible'
-        '';
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '5' # minutes
-        '';
-      }
-    ];
-    terminal = "screen-256color";
-    prefix = "C-x";
-    escapeTime = 10;
-    historyLimit = 50000;
-    extraConfig = ''
-      # Remove Vim mode delays
-      set -g focus-events on
-
-      # Enable full mouse support
-      set -g mouse on
-
-      # -----------------------------------------------------------------------------
-      # Key bindings
-      # -----------------------------------------------------------------------------
-
-      # Unbind default keys
-      unbind C-b
-      unbind '"'
-      unbind %
-
-      # Split panes, vertical or horizontal
-      bind-key x split-window -v
-      bind-key v split-window -h
-
-      # Move around panes with vim-like bindings (h,j,k,l)
-      bind-key -n M-k select-pane -U
-      bind-key -n M-h select-pane -L
-      bind-key -n M-j select-pane -D
-      bind-key -n M-l select-pane -R
-
-      # Smart pane switching with awareness of Vim splits.
-      # This is copy paste from https://github.com/christoomey/vim-tmux-navigator
-      is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-        | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-      bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
-      bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
-      bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
-      bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
-      tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-      if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-        "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-      if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-        "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
-
-      bind-key -T copy-mode-vi 'C-h' select-pane -L
-      bind-key -T copy-mode-vi 'C-j' select-pane -D
-      bind-key -T copy-mode-vi 'C-k' select-pane -U
-      bind-key -T copy-mode-vi 'C-l' select-pane -R
-      bind-key -T copy-mode-vi 'C-\' select-pane -l
-      '';
+    enableZshIntegration = true;
+    settings = {
+      theme = "GruvboxDark";
+      font-family = "JetBrains Mono";
+      font-size = lib.mkMerge [
+        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux 11)
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin 14)
+      ];
+      cursor-style = "block";
+      cursor-style-blink = false;
+      mouse-hide-while-typing = true;
+      window-padding-x = 10;
+      window-padding-y = 10;
+      confirm-close-surface = false;
     };
+  };
+
+  zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "gruvbox-dark";
+      default_shell = "zsh";
+      pane_frames = false;
+      simplified_ui = true;
+      default_layout = "compact";
+    };
+  };
+
+  zed-editor = {
+    enable = true;
+    extensions = [
+      "nix"
+      "toml"
+      "rust"
+      "markdown"
+    ];
+    userSettings = {
+      theme = "Gruvbox Dark";
+
+      ui_font_size = 16;
+      buffer_font_size = 14;
+      buffer_font_family = "JetBrains Mono";
+
+      vim_mode = false;
+
+      format_on_save = "on";
+      autosave = "on_focus_change";
+
+      terminal = {
+        font_family = "JetBrains Mono";
+        font_size = 14;
+      };
+    };
+  };
+
+  starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      format = "$directory$git_branch$git_status$rust$nix_shell$cmd_duration$line_break$character";
+
+      directory = {
+        style = "blue bold";
+        truncation_length = 3;
+        truncate_to_repo = true;
+      };
+
+      git_branch = {
+        style = "purple";
+        format = "[$branch]($style) ";
+      };
+
+      git_status = {
+        style = "red bold";
+        format = "[$all_status$ahead_behind]($style) ";
+      };
+
+      rust = {
+        format = "[$symbol($version)]($style) ";
+        symbol = "🦀 ";
+        style = "orange";
+      };
+
+      nix_shell = {
+        format = "[$symbol$state]($style) ";
+        symbol = "❄️ ";
+        style = "cyan";
+      };
+
+      cmd_duration = {
+        min_time = 2000;
+        format = "[$duration]($style) ";
+        style = "yellow";
+      };
+
+      character = {
+        success_symbol = "[❯](green)";
+        error_symbol = "[❯](red)";
+      };
+    };
+  };
+
+  obsidian = {
+    enable = true;
+    vaults.vault = {
+      path = "vault";
+      corePlugins.vim.enable = true;
+      appearance = {
+        theme = "obsidian";
+        cssTheme = "Gruvbox";
+      };
+    };
+  };
 }
