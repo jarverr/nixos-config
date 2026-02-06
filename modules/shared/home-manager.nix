@@ -218,7 +218,7 @@ in
 
   zellij = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
     settings = {
       theme = "gruvbox-dark";
       default_shell = "zsh";
