@@ -1,9 +1,4 @@
-{
-  user,
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
 
 {
   ".config/ghostty/config" = {
@@ -17,7 +12,7 @@
       window-padding-x = 10
       window-padding-y = 10
       confirm-close-surface = false
-      command = ${config.users.users.${user}.home}/.local/bin/zellij-picker
+      command = ${config.home.homeDirectory}/.local/bin/zellij-picker
     '';
   };
 
