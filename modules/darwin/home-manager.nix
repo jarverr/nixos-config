@@ -12,6 +12,8 @@ let
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
 {
+  xdg.enable = true;
+
   imports = [
     ./dock
   ];
