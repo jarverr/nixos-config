@@ -51,5 +51,4 @@ with pkgs;
   rustc
   cargo
   nixd
-  nil
 ]

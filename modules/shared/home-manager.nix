@@ -252,6 +252,15 @@ in
         font_family = "JetBrains Mono";
         font_size = 14;
       };
+
+      lsp = {
+        nix = {
+          language_servers = [
+            "nixd"
+            "!nil"
+          ];
+        };
+      };
     };
   };
 
