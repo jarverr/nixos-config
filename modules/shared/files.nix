@@ -12,7 +12,7 @@
       window-padding-x = 10
       window-padding-y = 10
       confirm-close-surface = false
-      command = direct:~/.local/bin/zellij-picker
+      command = ~/.local/bin/zellij-picker
     '';
   };
 
