@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  user = "%USER%";
+  user = "jarver";
 in
 
 {

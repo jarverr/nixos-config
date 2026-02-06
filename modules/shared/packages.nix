@@ -45,8 +45,11 @@ with pkgs;
   curl
   gh
   fzf
+  zed-editor
 
   # Programming languages and runtimes
   rustc
   cargo
+  nixd
+  nil
 ]
