@@ -216,25 +216,6 @@ in
     };
   };
 
-  ghostty = {
-    enable = pkgs.stdenv.hostPlatform.isLinux;
-    enableZshIntegration = true;
-    settings = {
-      theme = "GruvboxDark";
-      font-family = "JetBrains Mono";
-      font-size = lib.mkMerge [
-        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux 11)
-        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin 14)
-      ];
-      cursor-style = "block";
-      cursor-style-blink = false;
-      mouse-hide-while-typing = true;
-      window-padding-x = 10;
-      window-padding-y = 10;
-      confirm-close-surface = false;
-    };
-  };
-
   zellij = {
     enable = true;
     enableZshIntegration = true;
@@ -262,7 +243,7 @@ in
       buffer_font_size = 14;
       buffer_font_family = "JetBrains Mono";
 
-      vim_mode = false;
+      vim_mode = true;
 
       format_on_save = "on";
       autosave = "on_focus_change";
