@@ -8,7 +8,7 @@
 
 let
   user = "jarver";
-  sharedFiles = import ../shared/files.nix { inherit config pkgs; };
+  sharedFiles = import ../shared/files.nix { inherit user config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
 {
