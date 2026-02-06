@@ -12,7 +12,7 @@
       window-padding-x = 10
       window-padding-y = 10
       confirm-close-surface = false
-      command = ${config.home.homeDirectory}/.local/bin/zellij-picker
+      command = /Users/jarver/.local/bin/zellij-picker
     '';
   };
 
