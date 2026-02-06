@@ -69,9 +69,9 @@ in
             enable = true;
           };
 
-          sketchybar = {
-            enable = true;
-          };
+          #sketchybar = {
+          #  enable = true;
+          #};
         }
         // import ../shared/home-manager.nix { inherit config pkgs lib; };
 
