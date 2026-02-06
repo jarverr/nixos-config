@@ -12,8 +12,6 @@ let
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
 {
-  xdg.enable = true;
-
   imports = [
     ./dock
   ];
@@ -48,6 +46,8 @@ in
 
   # Enable home-manager
   home-manager = {
+    xdg.enable = true;
+
     useGlobalPkgs = true;
     users.${user} =
       {
