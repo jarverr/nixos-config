@@ -42,6 +42,13 @@ in
 
   environment.systemPackages = import ../../modules/shared/packages.nix { inherit pkgs; };
 
+  launchd.user.envVariables = {
+    XDG_CONFIG_HOME = "/Users/${user}/.config";
+    XDG_CACHE_HOME = "/Users/${user}/.cache";
+    XDG_DATA_HOME = "/Users/${user}/.local/share";
+    XDG_STATE_HOME = "/Users/${user}/.local/state";
+  };
+
   system = {
     checks.verifyNixPath = false;
     primaryUser = user;

@@ -46,8 +46,6 @@ in
 
   # Enable home-manager
   home-manager = {
-    xdg.enable = true;
-
     useGlobalPkgs = true;
     users.${user} =
       {

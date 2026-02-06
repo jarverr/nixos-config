@@ -6,7 +6,11 @@
       "Bash(git commit:*)",
       "mcp__acp__Bash",
       "mcp__acp__Edit",
-      "mcp__acp__Write"
+      "mcp__acp__Write",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:discourse.nixos.org)",
+      "WebFetch(domain:nix-community.github.io)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }
