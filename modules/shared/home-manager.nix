@@ -7,7 +7,7 @@
 
 let
   name = "jarverr";
-  user = "jarne";
+  user = "jarver";
   email = "jarne@vercruysse.dev";
 in
 {
