@@ -24,16 +24,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1770184146,
-        "narHash": "sha256-DsqnN6LvXmohTRaal7tVZO/AKBuZ02kPBiZKSU4qa/k=",
-        "owner": "LnL7",
+        "lastModified": 1768279640,
+        "narHash": "sha256-Rqt2i2QulWVdRSx0SrvaEUoa9q/uXwk2ph6u6htecpI=",
+        "owner": "x0d7x",
         "repo": "nix-darwin",
-        "rev": "0d7874ef7e3ba02d58bebb871e6e29da36fa1b37",
+        "rev": "ac1ebc48e7caa7dd426fb9388bbc2d3a3254b4bf",
         "type": "github"
       },
       "original": {
-        "owner": "LnL7",
-        "ref": "master",
+        "owner": "x0d7x",
+        "ref": "fix-karabiner-v15",
         "repo": "nix-darwin",
         "type": "github"
       }

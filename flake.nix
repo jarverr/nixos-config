@@ -7,7 +7,7 @@
     darwin = {
       # temp zodat we karabiner elements kunnne installeren
       # url = "github:LnL7/nix-darwin/master";
-      url = "https://github.com/nix-darwin/nix-darwin/pull/1679";
+      url = "github:x0d7x/nix-darwin/fix-karabiner-v15";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
