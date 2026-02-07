@@ -22,6 +22,12 @@ in
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
 
+      # XDG Base Directory
+      export XDG_CONFIG_HOME="$HOME/.config"
+      export XDG_CACHE_HOME="$HOME/.cache"
+      export XDG_DATA_HOME="$HOME/.local/share"
+      export XDG_STATE_HOME="$HOME/.local/state"
+
       # Define variables for directories
       export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
       export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
