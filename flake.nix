@@ -5,7 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      # temp zodat we karabiner elements kunnne installeren
+      # url = "github:LnL7/nix-darwin/master";
+      url = "https://github.com/nix-darwin/nix-darwin/pull/1679";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
