@@ -64,6 +64,9 @@ in
           ];
           stateVersion = "23.11";
         };
+
+        xdg.enable = true;
+
         programs = {
           aerospace = {
             enable = true;
