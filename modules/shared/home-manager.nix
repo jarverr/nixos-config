@@ -253,8 +253,8 @@ in
         font_size = 14;
       };
 
-      lsp = {
-        nix = {
+      languages = {
+        Nix = {
           language_servers = [
             "nixd"
             "!nil"
