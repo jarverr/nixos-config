@@ -20,6 +20,7 @@
     executable = true;
     text = ''
       #!/usr/bin/env bash
+      . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       sessions=$(zellij list-sessions -s 2>/dev/null)
 
       if [ -z "$sessions" ]; then
