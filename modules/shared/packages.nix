@@ -46,6 +46,7 @@ with pkgs;
   gh
   fzf
   zed-editor
+  kanata
 
   # Programming languages and runtimes
   rustc
