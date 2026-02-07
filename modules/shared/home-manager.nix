@@ -254,7 +254,7 @@ in
       };
 
       lsp = {
-        Nix = {
+        nix = {
           language_servers = [
             "nixd"
             "!nil"
