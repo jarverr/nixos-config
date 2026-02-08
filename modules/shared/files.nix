@@ -16,6 +16,36 @@
     '';
   };
 
+  ".config/kanata/kanata.kbd" = {
+    text = ''
+      (defsrc
+        caps a s d f g h j k l ;
+      )
+
+      (deflayer off
+        (layer-switch default) a s d f g h j k l ;
+      )
+
+      (deflayer default
+        (layer-switch nav)
+        (tap-hold 200 250 a lmet)
+        (tap-hold 200 250 s lalt)
+        (tap-hold 200 250 d lctl)
+        (tap-hold 200 250 f lsft)
+        g
+        h
+        (tap-hold 200 250 j rsft)
+        (tap-hold 200 250 k rctl)
+        (tap-hold 200 250 l ralt)
+        (tap-hold 200 250 ; rmet)
+      )
+
+      (deflayer nav
+        (layer-switch nav) _ _ (layer-switch default) _ _ left down up right (layer-switch off)
+      )
+    '';
+  };
+
   ".local/bin/zellij-picker" = {
     executable = true;
     text = ''

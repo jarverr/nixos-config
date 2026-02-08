@@ -88,6 +88,6 @@ in
   };
 
   services = {
-    karabiner-elements = {enable = true;};
+    #karabiner-elements = {enable = true;};
   };
 }
