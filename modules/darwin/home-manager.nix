@@ -73,7 +73,7 @@ in
             settings = {
               config-version = 2;
               after-startup-command = [ ];
-              start-at-login = false;
+              start-at-login = true;
               enable-normalization-flatten-containers = true;
               enable-normalization-opposite-orientation-for-nested-containers = true;
               accordion-padding = 30;
