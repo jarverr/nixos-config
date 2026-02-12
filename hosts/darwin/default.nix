@@ -87,7 +87,7 @@ in
     };
   };
 
-  launchd.daemons.kanata = {
+  launchd.agents.kanata = {
     script = ''
       ${pkgs.kanata}/bin/kanata -c /Users/jarver/.config/kanata/kanata.kbd
     '';
