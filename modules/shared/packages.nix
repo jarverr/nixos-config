@@ -47,9 +47,11 @@ with pkgs;
   fzf
   zed-editor
   kanata
+  opencode
 
   # Programming languages and runtimes
-  rustc
-  cargo
   nixd
+  cargo-leptos
+  rustup
+  tailwindcss_4
 ]

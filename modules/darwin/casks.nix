@@ -2,7 +2,7 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker"
+  "homebrew/cask/docker-desktop"
 
   # Browsers
   "zen"
@@ -11,4 +11,10 @@ _:
   "discord"
   "ghostty"
   "spotify"
+  "codex"
+
+  "seafile-client"
+  "microsoft-teams"
+  "karabiner-elements"
+
 ]

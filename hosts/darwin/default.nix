@@ -87,6 +87,18 @@ in
     };
   };
 
+  launchd.daemons.kanata = {
+    script = ''
+      ${pkgs.kanata}/bin/kanata -c /Users/jarver/.config/kanata/kanata.kbd
+    '';
+    serviceConfig = {
+      KeepAlive = true;
+      RunAtLoad = true;
+      StandardOutPath = "/tmp/kanata.out.log";
+      StandardErrorPath = "/tmp/kanata.err.log";
+    };
+  };
+
   services = {
     #karabiner-elements = {enable = true;};
   };
