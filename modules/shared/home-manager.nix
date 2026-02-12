@@ -233,6 +233,7 @@ in
       pane_frames = false;
       simplified_ui = true;
       default_layout = "compact";
+      default_mode = "locked";
     };
   };
 
