@@ -262,6 +262,17 @@ in
         font_size = 14;
       };
 
+      lsp = {
+            rust-analyzer = {
+              initialization_options = {cargo.allFeatures = true;};
+              procMacro = {
+                ignored = [
+                  "server"
+                ];
+              };
+            };
+      };
+
       languages = {
         Nix = {
           language_servers = [
