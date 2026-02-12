@@ -78,6 +78,7 @@ in
 
       finder = {
         _FXShowPosixPathInTitle = false;
+        AppleShowAllFiles = true;
       };
 
       trackpad = {
