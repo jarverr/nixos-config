@@ -263,14 +263,16 @@ in
       };
 
       lsp = {
-            rust-analyzer = {
-              initialization_options = {cargo.allFeatures = true;};
-              procMacro = {
-                ignored = [
-                  "server"
-                ];
-              };
-            };
+        rust-analyzer = {
+          initialization_options = {
+            cargo.allFeatures = true;
+          };
+          procMacro = {
+            ignored = [
+              "server"
+            ];
+          };
+        };
       };
     };
   };

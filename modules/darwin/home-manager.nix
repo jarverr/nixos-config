@@ -83,10 +83,37 @@ in
               on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
               automatically-unhide-macos-hidden-apps = false;
               persistent-workspaces = [
-                "1" "2" "3" "4" "5" "6" "7" "8" "9"
-                "A" "B" "C" "D" "E" "F" "G" "I" "M"
-                "N" "O" "P" "Q" "R" "S" "T" "U" "V"
-                "W" "X" "Y" "Z"
+                "1"
+                "2"
+                "3"
+                "4"
+                "5"
+                "6"
+                "7"
+                "8"
+                "9"
+                "A"
+                "B"
+                "C"
+                "D"
+                "E"
+                "F"
+                "G"
+                "I"
+                "M"
+                "N"
+                "O"
+                "P"
+                "Q"
+                "R"
+                "S"
+                "T"
+                "U"
+                "V"
+                "W"
+                "X"
+                "Y"
+                "Z"
               ];
               on-mode-changed = [ ];
               key-mapping.preset = "qwerty";
@@ -178,14 +205,38 @@ in
                 alt-shift-semicolon = "mode service";
               };
               mode.service.binding = {
-                esc = [ "reload-config" "mode main" ];
-                r = [ "flatten-workspace-tree" "mode main" ];
-                f = [ "layout floating tiling" "mode main" ];
-                backspace = [ "close-all-windows-but-current" "mode main" ];
-                alt-shift-h = [ "join-with left" "mode main" ];
-                alt-shift-j = [ "join-with down" "mode main" ];
-                alt-shift-k = [ "join-with up" "mode main" ];
-                alt-shift-l = [ "join-with right" "mode main" ];
+                esc = [
+                  "reload-config"
+                  "mode main"
+                ];
+                r = [
+                  "flatten-workspace-tree"
+                  "mode main"
+                ];
+                f = [
+                  "layout floating tiling"
+                  "mode main"
+                ];
+                backspace = [
+                  "close-all-windows-but-current"
+                  "mode main"
+                ];
+                alt-shift-h = [
+                  "join-with left"
+                  "mode main"
+                ];
+                alt-shift-j = [
+                  "join-with down"
+                  "mode main"
+                ];
+                alt-shift-k = [
+                  "join-with up"
+                  "mode main"
+                ];
+                alt-shift-l = [
+                  "join-with right"
+                  "mode main"
+                ];
               };
             };
           };
