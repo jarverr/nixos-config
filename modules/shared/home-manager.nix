@@ -272,15 +272,6 @@ in
               };
             };
       };
-
-      languages = {
-        Nix = {
-          language_servers = [
-            "nixd"
-            "!nil"
-          ];
-        };
-      };
     };
   };
 

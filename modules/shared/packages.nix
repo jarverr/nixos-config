@@ -51,8 +51,10 @@ with pkgs;
 
   # Programming languages and runtimes
   nixd
+  nil
   cargo-leptos
   wasm-bindgen-cli
+  leptosfmt
   rustup
   tailwindcss_4
 ]
