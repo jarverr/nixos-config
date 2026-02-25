@@ -52,6 +52,7 @@ with pkgs;
   # Programming languages and runtimes
   nixd
   nil
+  nixfmt-rfc-style
   cargo-leptos
   wasm-bindgen-cli
   leptosfmt
