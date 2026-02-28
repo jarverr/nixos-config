@@ -58,4 +58,6 @@ with pkgs;
   leptosfmt
   rustup
   tailwindcss_4
+
+  bun
 ]
