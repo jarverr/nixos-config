@@ -60,4 +60,5 @@ with pkgs;
   tailwindcss_4
 
   bun
+  supabase-cli
 ]
