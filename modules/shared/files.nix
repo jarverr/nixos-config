@@ -28,16 +28,16 @@
 
       (deflayer default
         (layer-switch nav)
-        (tap-hold 100 200 a lmet)
-        (tap-hold 100 200 s lalt)
-        (tap-hold 100 200 d lctl)
-        (tap-hold 100 200 f lsft)
+        (tap-hold 100 300 a lmet)
+        (tap-hold 100 300 s lalt)
+        (tap-hold 100 300 d lctl)
+        (tap-hold 100 300 f lsft)
         g
         h
-        (tap-hold 100 200 j rsft)
-        (tap-hold 100 200 k rctl)
-        (tap-hold 100 200 l ralt)
-        (tap-hold 100 200 ; rmet)
+        (tap-hold 100 300 j rsft)
+        (tap-hold 100 300 k rctl)
+        (tap-hold 100 300 l ralt)
+        (tap-hold 100 300 ; rmet)
       )
 
       (deflayer nav
