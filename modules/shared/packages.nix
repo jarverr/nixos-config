@@ -48,6 +48,8 @@ with pkgs;
   zed-editor
   kanata
   opencode
+  alacritty
+  neovim
 
   # Programming languages and runtimes
   nixd
