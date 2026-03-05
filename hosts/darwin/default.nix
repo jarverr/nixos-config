@@ -43,7 +43,10 @@ in
     '';
   };
 
-  environment.systemPackages = import ../../modules/shared/packages.nix { inherit pkgs; };
+  environment = {
+    variables.TERM = "xterm-256color";
+    systemPackages = import ../../modules/shared/packages.nix { inherit pkgs; };
+  };
 
   launchd.user.envVariables = {
     XDG_CONFIG_HOME = "/Users/${user}/.config";
