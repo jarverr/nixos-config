@@ -2,7 +2,10 @@
 
 with pkgs;
 [
+  # General
+  thunderbird
   # General packages for development and system management
+
   bash-completion
   bat
   btop
@@ -12,8 +15,6 @@ with pkgs;
   sqlite
   wget
   zip
-
-  # Notes
   obsidian
 
   # Encryption and security tools
@@ -30,21 +31,18 @@ with pkgs;
   fira-code
   meslo-lgs-nf
   noto-fonts-color-emoji
-
-  # File utilities
   fd
 
   # Text and terminal utilities
   jetbrains-mono
   ripgrep
   tree
-
-  unzip
-
-  # Development tools
   curl
   gh
   fzf
+  unzip
+
+  # Development tools
   zed-editor
   kanata
   opencode
@@ -60,7 +58,6 @@ with pkgs;
   leptosfmt
   rustup
   tailwindcss_4
-
   bun
   supabase-cli
 ]
