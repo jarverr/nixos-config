@@ -24,8 +24,6 @@ with pkgs;
   bitwarden-desktop
 
   # Cloud-related tools and SDKs
-  docker
-  docker-compose
 
   # Fonts
   fira-code
