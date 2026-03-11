@@ -2,7 +2,7 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker-desktop"
+  "ollama"
 
   # Browsers
   "zen"
