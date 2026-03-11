@@ -9,11 +9,8 @@ _:
 
   # Apps
   "discord"
-  "ghostty"
   "spotify"
-  "codex"
 
-  "seafile-client"
   "microsoft-teams"
   "karabiner-elements"
 
