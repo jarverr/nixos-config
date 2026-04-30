@@ -14,4 +14,6 @@ _:
   "microsoft-teams"
   "karabiner-elements"
 
+  "activitywatch"
+
 ]
